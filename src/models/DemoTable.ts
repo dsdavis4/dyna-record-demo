@@ -6,12 +6,12 @@ import DynaRecord, {
   Table
 } from "dyna-record";
 
-@Table({ name: "my-table", delimiter: "#" })
+@Table({ name: "dyna-record-demo", delimiter: "#" })
 abstract class DemoTable extends DynaRecord {
-  @PartitionKeyAttribute({ alias: "PK" })
+  @PartitionKeyAttribute()
   public readonly pk: PartitionKey;
 
-  @SortKeyAttribute({ alias: "SK" })
+  @SortKeyAttribute()
   public readonly sk: SortKey;
 }
 
