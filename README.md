@@ -1,4 +1,15 @@
-# Welcome to your CDK TypeScript project
+# Dyna-Record Demo project
+
+Demo project showing how to use dyna record. Leveraging cdk for table creation
+
+Prerequistes
+
+- See cdk prereqs
+
+1. Clone repo
+2. npm i
+3. Deploy the stack, creating just a dynamo table `npx cdk deploy`
+4. TODO
 
 <!-- TODO update -->
 

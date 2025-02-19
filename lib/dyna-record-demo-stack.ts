@@ -1,16 +1,15 @@
-import * as cdk from 'aws-cdk-lib';
-import { Construct } from 'constructs';
-// import * as sqs from 'aws-cdk-lib/aws-sqs';
+import * as cdk from "aws-cdk-lib";
+import { AttributeType, Table } from "aws-cdk-lib/aws-dynamodb";
+import { Construct } from "constructs";
 
 export class DynaRecordDemoStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    // The code that defines your stack goes here
-
-    // example resource
-    // const queue = new sqs.Queue(this, 'DynaRecordDemoQueue', {
-    //   visibilityTimeout: cdk.Duration.seconds(300)
-    // });
+    new Table(this, "dyna-record-demo-table", {
+      tableName: "dyna-record-demo",
+      partitionKey: { name: "pk", type: AttributeType.STRING },
+      sortKey: { name: "sk", type: AttributeType.STRING }
+    });
   }
 }
