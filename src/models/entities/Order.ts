@@ -8,10 +8,13 @@ import {
   StringAttribute,
   ForeignKey,
   BelongsTo,
-  HasOne
+  HasOne,
+  HasAndBelongsToMany
 } from "dyna-record";
 import User from "./User";
 import Payment from "./Payment";
+import Product from "./Product";
+import OrderProduct from "./OrderProduct";
 
 type OrderStatuses = "PLACED" | "SHIPPED";
 
@@ -35,6 +38,12 @@ class Order extends DemoTable {
 
   @HasOne(() => Payment, { foreignKey: "orderId" })
   public readonly payment: Payment;
+
+  @HasAndBelongsToMany(() => Product, {
+    targetKey: "orders",
+    through: () => ({ joinTable: OrderProduct, foreignKey: "orderId" })
+  })
+  public readonly products: Product[];
 }
 
 export default Order;
