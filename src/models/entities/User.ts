@@ -1,6 +1,13 @@
 import DemoTable from "../DemoTable";
-import { Entity, HasMany, IdAttribute, StringAttribute } from "dyna-record";
+import {
+  Entity,
+  HasMany,
+  HasOne,
+  IdAttribute,
+  StringAttribute
+} from "dyna-record";
 import Order from "./Order";
+import BillingAddress from "./BillingAddress";
 
 @Entity
 class User extends DemoTable {
@@ -16,6 +23,9 @@ class User extends DemoTable {
 
   @HasMany(() => Order, { foreignKey: "userId" })
   public readonly orders: Order[];
+
+  @HasOne(() => BillingAddress, { foreignKey: "userId" })
+  public readonly billingAddress: BillingAddress;
 }
 
 export default User;

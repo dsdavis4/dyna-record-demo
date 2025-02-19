@@ -15,31 +15,25 @@ import User from "./User";
 import Product from "./Product";
 import OrderProduct from "./OrderProduct";
 
-type OrderStatuses = "PENDING" | "PLACED" | "SHIPPED";
-
 @Entity
-class Order extends DemoTable {
-  @IdAttribute
+class BillingAddress extends DemoTable {
   @StringAttribute()
-  public readonly orderId: string;
+  public readonly addressLine1: string;
 
-  @EnumAttribute({ values: ["PENDING", "PLACED", "SHIPPED"] })
-  public readonly fullName: OrderStatuses;
+  @StringAttribute({ nullable: true })
+  public readonly addressLine2?: string;
 
-  @DateAttribute()
-  public readonly orderDate: Date;
+  @StringAttribute()
+  public readonly city: string;
+
+  @StringAttribute()
+  public readonly state: string;
 
   @ForeignKeyAttribute()
   public readonly userId: ForeignKey;
 
   @BelongsTo(() => User, { foreignKey: "userId" })
   public readonly user: User;
-
-  @HasAndBelongsToMany(() => Product, {
-    targetKey: "orders",
-    through: () => ({ joinTable: OrderProduct, foreignKey: "orderId" })
-  })
-  public readonly products: Product[];
 }
 
-export default Order;
+export default BillingAddress;
