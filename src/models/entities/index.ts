@@ -1,5 +1,5 @@
-export * from "./User";
-export * from "./Order";
-export * from "./Payment";
-export * from "./Product";
-export * from "./OrderProduct";
+export { default as User } from "./User";
+export { default as Order } from "./Order";
+export { default as Product } from "./Product";
+export { default as OrderProduct } from "./OrderProduct";
+export { default as Payment } from "./Payment";
