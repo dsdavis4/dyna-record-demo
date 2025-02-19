@@ -8,8 +8,8 @@ class User extends DemoTable {
   @StringAttribute()
   public readonly username: string;
 
-  @StringAttribute()
-  public readonly fullName: string;
+  @StringAttribute({ nullable: true })
+  public readonly fullName?: string;
 
   @StringAttribute()
   public readonly email: string;

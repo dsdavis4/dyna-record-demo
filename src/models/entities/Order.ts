@@ -7,9 +7,11 @@ import {
   IdAttribute,
   StringAttribute,
   ForeignKey,
-  BelongsTo
+  BelongsTo,
+  HasOne
 } from "dyna-record";
 import User from "./User";
+import Payment from "./Payment";
 
 type OrderStatuses = "PLACED" | "SHIPPED";
 
@@ -30,6 +32,9 @@ class Order extends DemoTable {
 
   @BelongsTo(() => User, { foreignKey: "userId" })
   public readonly user: User;
+
+  @HasOne(() => Payment, { foreignKey: "orderId" })
+  public readonly payment: Payment;
 }
 
 export default Order;
