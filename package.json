@@ -11,6 +11,7 @@
     "debug": "npx ts-node index.ts"
   },
   "devDependencies": {
+    "@tsconfig/recommended": "^1.0.8",
     "@types/node": "22.7.9",
     "aws-cdk": "2.165.0",
     "ts-node": "^10.9.2",

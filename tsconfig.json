@@ -1,24 +1,14 @@
 {
+  "extends": "@tsconfig/recommended/tsconfig.json",
+  "exclude": ["node_modules", "cdk.out", "dist"],
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "commonjs",
-    "lib": ["es2020", "dom"],
     "declaration": true,
-    "strict": true,
-    "noImplicitAny": true,
+    "declarationMap": true,
     "strictNullChecks": true,
-    "noImplicitThis": true,
-    "alwaysStrict": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": false,
-    "inlineSourceMap": true,
-    "inlineSources": true,
-    "experimentalDecorators": true,
+    "strict": true,
+    "target": "ES2022",
+    "noImplicitOverride": true,
     "strictPropertyInitialization": false,
-    "typeRoots": ["./node_modules/@types"],
-    "outDir": "./dist"
-  },
-  "exclude": ["node_modules", "cdk.out", "dist"]
+    "outDir": "./dist" /* Specify an output folder for all emitted files. */
+  }
 }
