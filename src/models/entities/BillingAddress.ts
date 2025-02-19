@@ -1,15 +1,10 @@
 import DemoTable from "../DemoTable";
 import {
-  DateAttribute,
   Entity,
-  EnumAttribute,
   ForeignKeyAttribute,
-  IdAttribute,
   StringAttribute,
   ForeignKey,
-  BelongsTo,
-  HasOne,
-  HasAndBelongsToMany
+  BelongsTo
 } from "dyna-record";
 import User from "./User";
 import Product from "./Product";

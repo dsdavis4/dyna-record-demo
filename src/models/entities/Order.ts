@@ -4,11 +4,9 @@ import {
   Entity,
   EnumAttribute,
   ForeignKeyAttribute,
-  IdAttribute,
   StringAttribute,
   ForeignKey,
   BelongsTo,
-  HasOne,
   HasAndBelongsToMany
 } from "dyna-record";
 import User from "./User";
@@ -19,7 +17,6 @@ type OrderStatuses = "PENDING" | "PLACED" | "SHIPPED";
 
 @Entity
 class Order extends DemoTable {
-  @IdAttribute
   @StringAttribute()
   public readonly orderId: string;
 

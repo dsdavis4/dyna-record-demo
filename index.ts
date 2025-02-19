@@ -50,14 +50,17 @@ process.env.DYNA_RECORD_LOGGING_ENABLED = "true";
   const userIncludes = await User.findById("nemo123", {
     include: [{ association: "orders" }, { association: "billingAddress" }]
   });
+  console.dir(userIncludes);
 
   const orderIncludes = await Order.findById(order.id, {
     include: [{ association: "products" }, { association: "user" }]
   });
+  console.dir(orderIncludes);
 
   const productIncludes = await Product.findById(fishFood.id, {
     include: [{ association: "orders" }]
   });
+  console.dir(productIncludes);
 
   // Example Query
 
@@ -69,6 +72,7 @@ process.env.DYNA_RECORD_LOGGING_ENABLED = "true";
       // status: ["PENDING", "SHIPPED"]
     }
   });
+  console.dir(userPendingOrders);
 
   const alternativeUserPendingOrders = await User.query(
     {
@@ -79,6 +83,5 @@ process.env.DYNA_RECORD_LOGGING_ENABLED = "true";
       filter: { status: "PENDING" }
     }
   );
-
-  debugger;
+  console.dir(alternativeUserPendingOrders);
 })();

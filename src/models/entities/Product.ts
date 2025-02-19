@@ -2,8 +2,6 @@ import DemoTable from "../DemoTable";
 import {
   Entity,
   HasAndBelongsToMany,
-  HasMany,
-  IdAttribute,
   NumberAttribute,
   StringAttribute
 } from "dyna-record";
