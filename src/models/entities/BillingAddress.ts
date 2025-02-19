@@ -26,9 +26,6 @@ class BillingAddress extends DemoTable {
   @StringAttribute()
   public readonly city: string;
 
-  @StringAttribute()
-  public readonly state: string;
-
   @ForeignKeyAttribute()
   public readonly userId: ForeignKey;
 

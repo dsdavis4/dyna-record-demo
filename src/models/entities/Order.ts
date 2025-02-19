@@ -24,7 +24,7 @@ class Order extends DemoTable {
   public readonly orderId: string;
 
   @EnumAttribute({ values: ["PENDING", "PLACED", "SHIPPED"] })
-  public readonly fullName: OrderStatuses;
+  public readonly status: OrderStatuses;
 
   @DateAttribute()
   public readonly orderDate: Date;

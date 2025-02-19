@@ -1,22 +1,84 @@
-import { User, Product } from "./src";
+import { User, Product, BillingAddress, Order, OrderProduct } from "./src";
 
+// Optionally turn on debug logging to view the operations dyna-record performs
+process.env.DYNA_RECORD_LOGGING_ENABLED = "true";
+
+// Note: This is not an exhaustive list of available operations/access patterns
 (async () => {
   // Create the user
   const user = await User.create({
-    username: "testUser",
-    email: "test@test.com"
+    fullName: "Nemo",
+    username: "nemo123",
+    email: "fish-are-friends-not-food@test.com"
+  });
+
+  // Create the users billing address
+  const billingAddress = await BillingAddress.create({
+    addressLine1: "42 Wallaby Way",
+    city: "Sydney",
+    userId: user.id
   });
 
   // Create some products
-  const pencil = await Product.create({
+  const fishFood = await Product.create({
     sku: "abc123",
-    name: "Pencil",
+    name: "Fish Food",
     price: 1.01
   });
 
-  const paper = await Product.create({
+  const tankCleaner = await Product.create({
     sku: "abc456",
-    name: "Paper",
+    name: "Fish Tank Cleaner",
     price: 10.25
   });
+
+  // Create an Order
+  const order = await Order.create({
+    orderId: "order-1",
+    status: "PENDING",
+    orderDate: new Date("1/1/2025"),
+    userId: user.id
+  });
+
+  // Add some products to the order
+  await OrderProduct.create({ orderId: order.id, productId: fishFood.id });
+
+  await OrderProduct.create({ orderId: order.id, productId: tankCleaner.id });
+
+  // Example FindById patterns
+
+  const userIncludes = await User.findById("nemo123", {
+    include: [{ association: "orders" }, { association: "billingAddress" }]
+  });
+
+  const orderIncludes = await Order.findById(order.id, {
+    include: [{ association: "products" }, { association: "user" }]
+  });
+
+  const productIncludes = await Product.findById(fishFood.id, {
+    include: [{ association: "orders" }]
+  });
+
+  // Example Query
+
+  const userPendingOrders = await User.query(user.id, {
+    skCondition: { $beginsWith: "Order" },
+    filter: {
+      status: "PENDING"
+      // or check multiple
+      // status: ["PENDING", "SHIPPED"]
+    }
+  });
+
+  const alternativeUserPendingOrders = await User.query(
+    {
+      pk: User.partitionKeyValue(user.id),
+      sk: { $beginsWith: "Order" }
+    },
+    {
+      filter: { status: "PENDING" }
+    }
+  );
+
+  debugger;
 })();
