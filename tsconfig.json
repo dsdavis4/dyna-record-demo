@@ -9,6 +9,6 @@
     "target": "ES2022",
     "noImplicitOverride": true,
     "strictPropertyInitialization": false,
-    "outDir": "./dist" /* Specify an output folder for all emitted files. */
+    "outDir": "./dist"
   }
 }
