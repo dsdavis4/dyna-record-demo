@@ -1,7 +1,5 @@
 import { User, Product, BillingAddress, Order, OrderProduct } from "./src";
 
-// TODO add update and delete examples
-
 // Optionally turn on debug logging to view the operations dyna-record performs
 process.env.DYNA_RECORD_LOGGING_ENABLED = "true";
 
