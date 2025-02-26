@@ -5,7 +5,8 @@ process.env.DYNA_RECORD_LOGGING_ENABLED = "true";
 
 // Note: This is not an exhaustive list of available operations/access patterns
 (async () => {
-  // Create the user
+  // Create the user.
+  // This will fail the second time unless the username attribute is updated because its marked as the IdField in the model
   const user = await User.create({
     fullName: "Nemo",
     username: "nemo123",
