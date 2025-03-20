@@ -6,7 +6,7 @@ import DynaRecord, {
   Table
 } from "dyna-record";
 
-@Table({ name: "dyna-record-demo", delimiter: "#" })
+@Table({ name: "dyna-record-demo" })
 abstract class DemoTable extends DynaRecord {
   @PartitionKeyAttribute()
   public readonly pk: PartitionKey;

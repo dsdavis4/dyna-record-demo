@@ -9,7 +9,7 @@ process.env.DYNA_RECORD_LOGGING_ENABLED = "true";
   // This will fail the second time unless the username attribute is updated because its marked as the IdField in the model
   const user = await User.create({
     fullName: "Nemo",
-    username: "nemo123",
+    username: "nemo123444",
     email: "fish-are-friends-not-food@test.com"
   });
 
