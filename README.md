@@ -1,5 +1,7 @@
 # Dyna-Record Demo Project
 
+[Check out the article on Medium](https://medium.com/@drewdavis888/unlock-relational-data-modeling-in-dynamodb-with-dyna-record-5b9cce27c3ce)
+
 This demo project showcases how to use **dyna-record** for advanced data modeling in DynamoDB. The project leverages **AWS CDK** to set up a DynamoDB table and provides mock models to help you explore dyna-record's features, including creating, updating, deleting, and querying data using TypeScript.
 
 - **GitHub:** [dyna-record on GitHub](https://github.com/dsdavis4/dyna-record)
